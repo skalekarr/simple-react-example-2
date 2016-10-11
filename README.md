@@ -18,18 +18,18 @@ We expect that you will complete this test in an honest fashion. You should not 
 
 ### Scenario
 
-* Given the user has loaded the page
-* When the page waits for data to load
-* Then the text "Loading" should be shown
-* And no other elements should be shown
-
-### Scenario
-
 * Given a list of pizzas available at '/pizza.json'
 * When the server returns a response
 * Then the list of pizzas should be shown
 * And a filter input is shown
 * And a sort button is shown
+
+### Scenario
+
+* Given the user has loaded the page
+* When the page waits for data to load
+* Then the text "Loading" should be shown
+* And no other elements should be shown
 
 ### Scenario
 
