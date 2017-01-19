@@ -28,12 +28,7 @@ export class AppContainer extends Component {
 
     componentDidMount() {
         self = this;
-        global.setTimeout(
-            function(){
-                fetchPizzaList();
-            },
-            2000
-        );
+        fetchPizzaList();
     }
 
     filterData(event) {
