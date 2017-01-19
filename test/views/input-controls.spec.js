@@ -31,7 +31,7 @@ describe('</InputControl>', () => {
     });
 
     it('should have row class', () => {
-        expect(renderedView.props.className).equals('row');
+        expect(renderedView.props.className).equals('row panel-body');
     });
 
     describe('given children are rendered', () => {

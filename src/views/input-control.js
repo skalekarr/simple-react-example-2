@@ -2,7 +2,7 @@ import React, {PropTypes} from 'react';
 
 const InputControl = (props) => {
     return (
-        <div className="row">
+        <div className="row panel-body">
             <div className="col-sm-8">
                 <input
                     type="text"

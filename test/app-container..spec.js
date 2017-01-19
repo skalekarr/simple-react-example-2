@@ -42,39 +42,41 @@ describe('<AppContainer /> Component', () => {
         expect(childElement[0].props).equals(headerProps);
       });
 
-      it('should contain <InputControl/>', () => {
-        const filterStub = sandbox.stub();
-        const sortStub = sandbox.stub();
-        const InputControlProps = {filter: filterStub , sort: sortStub};
-
-        expect(childElement[1].type).equals(InputControl);
-        //expect(childElement[1].props).equals(InputControlProps);
-      });
-
       it('should contain <Footer/>', () => {
-        const footerProps = {footerText: 'This app is developed in react for Deere & Co.'};
-        expect(childElement[3].type).equals(Footer);
-        expect(childElement[3].props).equals(footerProps);
+        const footerProps = {footerText: 'This app is developed in react.'};
+        expect(childElement[2].type).equals(Footer);
+        expect(childElement[2].props).equals(footerProps);
       });
 
       describe('and page is loading', () => {
         it('should contain <LoadingIndicator/>', () => {
-          expect(childElement[2].props.children.type).equals(LoadingIndicator);
+          const loadingIndicatorText = {loadingIndicatorText: 'Loading... Please Wait'};
+          expect(childElement[1].type).equals(LoadingIndicator);
+          expect(childElement[1].props).equals(loadingIndicatorText);
         });
       });
 
       describe('and page is loaded', () => {
-        it('should contain <PizzaContainer/>', () => {
-          const pizzaList = chance.unique(chance.string, 5);
+        let LoadedContainer, pizzaList;
+
+        beforeEach(() => {
+          pizzaList = chance.unique(chance.string, 5);
 
           renderedContainer = shallow(<AppContainer/>);
           renderedContainer.setState({isLoading: false});
           renderedContainer.setState({pizzaList: pizzaList});
 
           childElement = renderedContainer.props().children;
+          LoadedContainer = childElement[1].props.children;
+        });
 
-          expect(childElement[2].props.children.type).equals(PizzaContainer);
-          expect(childElement[2].props.children.props).equals({pizzaList: pizzaList});
+        it('should contain <InputControl/>', () => {
+          expect(LoadedContainer[0].type).equals(InputControl);
+        });
+
+        it('should contain <PizzaContainer/>', () => {
+          expect(LoadedContainer[1].type).equals(PizzaContainer);
+          expect(LoadedContainer[1].props).equals({pizzaList: pizzaList});
         });
       });
     });

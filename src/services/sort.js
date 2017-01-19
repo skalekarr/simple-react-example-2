@@ -4,6 +4,8 @@ function sortOnCompare(a, b) {
   } else if (b < a) {
     return -1;
   }
+
+  return 0;
 }
 
 
